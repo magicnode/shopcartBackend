@@ -1,6 +1,6 @@
 <?php
 // +----------------------------------------------------------------------
-// | ThinkPHP [ WE CAN DO IT JUST THINK ]
+// | ThinkPHP [ WE CAN DO IT JUST THINK IT ]
 // +----------------------------------------------------------------------
 // | Copyright (c) 2006-2016 http://thinkphp.cn All rights reserved.
 // +----------------------------------------------------------------------
@@ -9,6 +9,24 @@
 // | Author: yunwuxin <448901948@qq.com>
 // +----------------------------------------------------------------------
 
-return [
-  './console/Clear.php'
-];
+namespace think\exception;
+
+class ClassNotFoundException extends \RuntimeException
+{
+    protected $class;
+    public function __construct($message, $class = '')
+    {
+        $this->message = $message;
+        $this->class   = $class;
+    }
+
+    /**
+     * 获取类名
+     * @access public
+     * @return string
+     */
+    public function getClass()
+    {
+        return $this->class;
+    }
+}
